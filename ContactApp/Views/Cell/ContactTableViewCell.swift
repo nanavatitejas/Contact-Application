@@ -23,6 +23,10 @@ class ContactTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    func reloadCellData() {
+        contactName.text = "test"
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
