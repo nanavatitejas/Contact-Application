@@ -23,8 +23,16 @@ class ContactTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func reloadCellData() {
-        contactName.text = "test"
+    func reloadCellData(contact : Contact) {
+        
+        let fName = contact.first_name ?? ""
+        let lName = contact.last_name ?? ""
+        
+        contactName.text = fName + lName
+        
+        isFavoriteImage.isHidden = contact.favorite ?? false
+        
+        self.contactImage.image = contact.image()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
