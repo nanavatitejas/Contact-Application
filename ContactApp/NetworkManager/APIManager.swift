@@ -15,12 +15,19 @@ static let shared: APIManager = APIManager()
 // constants
     static private let gojekBaseUrl: String             = "http://gojek-contacts-app.herokuapp.com"
     static private let gojekContactExtensionUrl: String = "/contacts.json"
+    
+    static private let gojekContactDetailExtensionUrl : String = "/contacts"
+    
     static private let didDownloadKey                   = "didDownloadGojekContactsKey"
     static public let alphabet: [String]                = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#"]
     
     
     static public func gojekUrl() -> String {
         return APIManager.gojekBaseUrl + APIManager.gojekContactExtensionUrl
+    }
+    
+    static public func gojekUrlDetail() -> String {
+        return APIManager.gojekBaseUrl + APIManager.gojekContactDetailExtensionUrl
     }
     
     

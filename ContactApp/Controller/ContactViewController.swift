@@ -39,12 +39,22 @@ class ContactViewController: UIViewController {
     
     
     
-    @IBAction func addBtnPressed(_ sender: UIBarButtonItem) {
-    }
+    
     
 
 }
 
+
+// MARK: IBActions
+
+
+extension ContactViewController{
+    
+    @IBAction func addBtnPressed(_ sender: UIBarButtonItem) {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditContactViewController") as? EditContactViewController
+        self.navigationController?.present(vc!, animated: true, completion: nil)
+    }
+}
 
 // MARK: API CALL
 extension ContactViewController{
@@ -134,6 +144,13 @@ extension ContactViewController{
 
 extension ContactViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contact = self.contactArray[indexPath.row]
+        
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactDetailViewController") as? ContactDetailViewController
+        vc?.contact = contact
+        self.navigationController?.pushViewController(vc!, animated: true)
+
+
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

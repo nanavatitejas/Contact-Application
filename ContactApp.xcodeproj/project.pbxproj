@@ -15,6 +15,9 @@
 		5B9C2F4A22F0AAAD00516D5C /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C2F4922F0AAAD00516D5C /* HTTPManager.swift */; };
 		5B9C2F4D22F0AB8E00516D5C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C2F4C22F0AB8E00516D5C /* APIManager.swift */; };
 		5B9C2F4F22F0AC7C00516D5C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C2F4E22F0AC7C00516D5C /* Contact.swift */; };
+		5B9C2F5122F0B95D00516D5C /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C2F5022F0B95D00516D5C /* ContactDetailViewController.swift */; };
+		5B9C2F7C22F1B6F000516D5C /* ContactDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C2F7B22F1B6F000516D5C /* ContactDetailTableViewCell.swift */; };
+		5B9C2F7E22F2013600516D5C /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C2F7D22F2013600516D5C /* EditContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		5B9C2F4922F0AAAD00516D5C /* HTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		5B9C2F4C22F0AB8E00516D5C /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		5B9C2F4E22F0AC7C00516D5C /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		5B9C2F5022F0B95D00516D5C /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		5B9C2F7B22F1B6F000516D5C /* ContactDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailTableViewCell.swift; sourceTree = "<group>"; };
+		5B9C2F7D22F2013600516D5C /* EditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,8 @@
 			children = (
 				5B9C2F2F22F00ADB00516D5C /* AppDelegate.swift */,
 				5B9C2F3122F00ADB00516D5C /* ContactViewController.swift */,
+				5B9C2F5022F0B95D00516D5C /* ContactDetailViewController.swift */,
+				5B9C2F7D22F2013600516D5C /* EditContactViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -93,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				5B9C2F4422F01F9E00516D5C /* ContactTableViewCell.swift */,
+				5B9C2F7B22F1B6F000516D5C /* ContactDetailTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -201,7 +210,10 @@
 			files = (
 				5B9C2F4F22F0AC7C00516D5C /* Contact.swift in Sources */,
 				5B9C2F4522F01F9E00516D5C /* ContactTableViewCell.swift in Sources */,
+				5B9C2F7C22F1B6F000516D5C /* ContactDetailTableViewCell.swift in Sources */,
 				5B9C2F3222F00ADB00516D5C /* ContactViewController.swift in Sources */,
+				5B9C2F5122F0B95D00516D5C /* ContactDetailViewController.swift in Sources */,
+				5B9C2F7E22F2013600516D5C /* EditContactViewController.swift in Sources */,
 				5B9C2F4D22F0AB8E00516D5C /* APIManager.swift in Sources */,
 				5B9C2F3022F00ADB00516D5C /* AppDelegate.swift in Sources */,
 				5B9C2F4A22F0AAAD00516D5C /* HTTPManager.swift in Sources */,

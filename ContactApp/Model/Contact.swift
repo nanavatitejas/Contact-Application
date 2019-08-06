@@ -17,6 +17,8 @@ class Contact: NSObject {
     var favorite : Bool?
     var url : String?
     var imageData     : Data?
+    var phone_number :  String?
+    var email : String?
     
     
     func image() -> UIImage {
