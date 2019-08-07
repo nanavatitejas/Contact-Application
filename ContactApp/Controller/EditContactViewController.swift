@@ -30,6 +30,9 @@ class EditContactViewController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var contact : Contact?
+    
+    var isEdit : Bool?
+    
 
     
     override func viewDidLoad() {
@@ -38,7 +41,7 @@ class EditContactViewController: UIViewController {
         if contact == nil {
             navBar.topItem?.title = "Add Contact"
 
-        } 
+        }
         
         super.viewDidLoad()
         self.tblView.tableFooterView = UIView()
@@ -91,8 +94,95 @@ extension EditContactViewController{
     }
     
     @IBAction func doneBtnPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        
+        if self.isEdit == false{
+            self.addContact()
+        } else {
+            self.editContact()
+            
+           // self.navigationController?.popToRootViewController(animated: true)
+           
+            
+
+        }
     }
+    
+    func editContact(){
+        var url = APIManager.gojekUrlDetail()
+        
+        var strID : String?
+        if let id = contact?.id{
+            strID = "\(id)"
+            
+        }
+        
+        
+        strID = "/" + strID! + ".json"
+        
+        // http://gojek-contacts-app.herokuapp.com/contacts/62.json
+        url = url + strID!
+        
+        
+        let param = ["first_name": self.contact?.first_name as Any,"last_name":self.contact?.last_name as Any,"phone_number":self.contact?.phone_number as Any,"email":self.contact?.email as Any,"favorite":false] as [String : Any]
+        
+        HTTPManager.shared.put(urlString: url, param: param) { (data : Data?) -> Void in
+            if let d = data{
+                var dataArr: [String: Any] = [String: Any]()
+                
+                // format contacts data to json
+                do {
+                    dataArr = try JSONSerialization.jsonObject(with: d, options: []) as! [String: Any]
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+                // empty data
+                if dataArr.count == 0 {
+                    return
+                }
+                
+               self.dismiss(animated: false, completion: nil)
+
+            }
+        }
+        
+        
+    }
+    
+    
+    func addContact(){
+        let url = APIManager.gojekUrl()
+        
+       
+        
+        
+        
+        let param = ["first_name": self.contact?.first_name as Any,"last_name":self.contact?.last_name as Any,"phone_number":self.contact?.phone_number as Any,"email":self.contact?.email as Any,"favorite":false] as [String : Any]
+        
+        HTTPManager.shared.post(urlString: url, param: param) { (data : Data?) -> Void in
+            if let d = data{
+                var dataArr: [String: Any] = [String: Any]()
+                
+                // format contacts data to json
+                do {
+                    dataArr = try JSONSerialization.jsonObject(with: d, options: []) as! [String: Any]
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+                // empty data
+                if dataArr.count == 0 {
+                    return
+                }
+                
+                self.dismiss(animated: false, completion: nil)
+                
+            }
+        }
+        
+        
+    }
+
 }
 
 extension EditContactViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -131,6 +221,10 @@ extension EditContactViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let contactCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierEditDetail, for: indexPath) as! ContactDetailTableViewCell
         contactCell.lblValue.isHidden = true
+        contactCell.txtValue.tag = indexPath.row
+        contactCell.txtValue.delegate = self
+        contactCell.txtValue.isHidden = false
+        contactCell.txtValue.isUserInteractionEnabled = true
         switch indexPath.row {
         case 0:
             contactCell.lblKey.text = "First Name"
@@ -149,4 +243,23 @@ extension EditContactViewController : UITableViewDataSource{
     }
     
     
+}
+
+extension EditContactViewController : UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.tag == 0{
+            self.contact?.first_name = textField.text
+        }
+        if textField.tag == 1{
+            self.contact?.last_name = textField.text
+        }
+        if textField.tag == 2{
+            self.contact?.phone_number = textField.text
+        }
+        if textField.tag == 3{
+            self.contact?.email = textField.text
+        }
+        textField.resignFirstResponder()
+        return true
+    }
 }

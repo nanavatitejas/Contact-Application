@@ -159,6 +159,7 @@ extension ContactDetailViewController{
     @IBAction func editBtnPressed(_ sender: UIBarButtonItem) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditContactViewController") as? EditContactViewController
         vc?.contact = contact
+        vc?.isEdit = true
         self.navigationController?.present(vc!, animated: true, completion: nil)
     }
 }

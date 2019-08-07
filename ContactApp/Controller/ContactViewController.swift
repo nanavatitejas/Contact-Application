@@ -29,6 +29,11 @@ class ContactViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fetchContacts()
+    }
+    
     func showActivityIndicator() {
         self.spinner.startAnimating()
     }

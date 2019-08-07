@@ -34,4 +34,60 @@ class HTTPManager {
             task.resume()
         }
     }
+    
+    public func put(urlString: String, param : [String : Any],completionBlock: ((Data?) -> Void)?) {
+        
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: param)
+        
+        // create post request
+        let url = URL(string: urlString)
+        if let usableUrl = url {
+            var request = URLRequest(url: usableUrl)
+            
+
+            request.httpMethod = "PUT"
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+
+            // insert json data to the request
+            request.httpBody = jsonData
+            
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                completionBlock?(data)
+            })
+            
+            task.resume()
+        }
+       
+    }
+    
+    public func post(urlString: String, param : [String : Any],completionBlock: ((Data?) -> Void)?) {
+        
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: param)
+        
+        // create post request
+        let url = URL(string: urlString)
+        if let usableUrl = url {
+            var request = URLRequest(url: usableUrl)
+            
+            
+            request.httpMethod = "PUT"
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            
+            // insert json data to the request
+            request.httpBody = jsonData
+            
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                completionBlock?(data)
+            })
+            
+            task.resume()
+        }
+        
+    }
+    
+    
+    
+    
 }
